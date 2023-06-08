@@ -1,7 +1,25 @@
 syntax = "proto3";
+
 package quotationmvp.quotation;
+
+import "quotationmvp/quotation/envelope.proto";
+import "quotationmvp/quotation/transaction.proto";
 
 option go_package = "quotation-mvp/x/quotation/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc RequestQuotation (MsgRequestQuotation) returns (MsgRequestQuotationResponse);
+}
+message MsgRequestQuotation {
+  string      creator  = 1;
+  string      id       = 2;
+  Transaction tx       = 3;
+  Envelope    envelope = 4;
+  string      version  = 5;
+}
+
+message MsgRequestQuotationResponse {
+  string id = 1;
+}
+

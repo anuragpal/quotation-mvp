@@ -1,0 +1,10 @@
+syntax = "proto3";
+package quotationmvp.quotation;
+
+option go_package = "quotation-mvp/x/quotation/types";
+
+message Transaction {
+  string data            = 1;
+  string sender          = 2;
+  repeated string receiver = 3;
+}

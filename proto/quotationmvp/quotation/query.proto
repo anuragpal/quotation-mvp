@@ -1,26 +1,60 @@
 syntax = "proto3";
+
 package quotationmvp.quotation;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "quotationmvp/quotation/params.proto";
+import "quotationmvp/quotation/quotation.proto";
 
 option go_package = "quotation-mvp/x/quotation/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/quotation-mvp/quotation/params";
+  
+  }
+  
+  // Queries a list of ListQuotation items.
+  rpc ListQuotation (QueryListQuotationRequest) returns (QueryListQuotationResponse) {
+    option (google.api.http).get = "/quotation-mvp/quotation/list_quotation";
+  
+  }
+  
+  // Queries a list of ShowQuotation items.
+  rpc ShowQuotation (QueryShowQuotationRequest) returns (QueryShowQuotationResponse) {
+    option (google.api.http).get = "/quotation-mvp/quotation/show_quotation/{id}";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
 }
+
+message QueryListQuotationRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryListQuotationResponse {
+  repeated Quotation                              quotation  = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryShowQuotationRequest {
+  string id = 1;
+}
+
+message QueryShowQuotationResponse {
+  Quotation quotation = 1;
+}
+

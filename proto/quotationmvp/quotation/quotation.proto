@@ -1,0 +1,15 @@
+syntax = "proto3";
+package quotationmvp.quotation;
+
+import "quotationmvp/quotation/envelope.proto";
+import "quotationmvp/quotation/transaction.proto";
+
+option go_package = "quotation-mvp/x/quotation/types";
+
+message Quotation {
+  string id = 1;
+  Transaction tx = 2;
+  Envelope envelope = 3;
+  string version = 4;
+  string creator = 5;
+}

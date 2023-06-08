@@ -1,0 +1,11 @@
+syntax = "proto3";
+package quotationmvp.quotation;
+
+option go_package = "quotation-mvp/x/quotation/types";
+
+message Envelope {
+  
+  string event = 1; 
+  bool isEncrypt = 2;
+  string timestamp = 3; 
+}
