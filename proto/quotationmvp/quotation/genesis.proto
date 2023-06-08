@@ -1,0 +1,12 @@
+syntax = "proto3";
+package quotationmvp.quotation;
+
+import "gogoproto/gogo.proto";
+import "quotationmvp/quotation/params.proto";
+
+option go_package = "quotation-mvp/x/quotation/types";
+
+// GenesisState defines the quotation module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
