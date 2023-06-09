@@ -3,16 +3,24 @@ package quotationmvp.quotation;
 
 option go_package = "quotation-mvp/x/quotation/types";
 
+enum Status {
+  PENDING = 0;
+  APPROVED = 1;
+  CANCELLED = 2;
+}
+
 message Transaction {
-  string data            = 1;
-  string sender          = 2;
-  repeated string receiver = 3;
+  string data               = 1;
+  string sender             = 2;
+  repeated string receiver  = 3;
+  Status status             = 4;  
 }
 
 
 message ProposalTransaction {
   string data            = 1;
   string sender          = 2;
-  string receiver = 3;
-  string rqId = 4;
+  string receiver        = 3;
+  string rqId            = 4;
+  Status status          = 5;
 }

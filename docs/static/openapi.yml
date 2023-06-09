@@ -43892,6 +43892,13 @@ paths:
                           type: string
                         rqId:
                           type: string
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - APPROVED
+                            - CANCELLED
+                          default: PENDING
                     envelope:
                       type: object
                       properties:
@@ -44038,6 +44045,13 @@ paths:
                           type: array
                           items:
                             type: string
+                        status:
+                          type: string
+                          enum:
+                            - PENDING
+                            - APPROVED
+                            - CANCELLED
+                          default: PENDING
                     envelope:
                       type: object
                       properties:
@@ -44218,6 +44232,13 @@ paths:
                         type: string
                       rqId:
                         type: string
+                      status:
+                        type: string
+                        enum:
+                          - PENDING
+                          - APPROVED
+                          - CANCELLED
+                        default: PENDING
                   envelope:
                     type: object
                     properties:
@@ -44282,6 +44303,13 @@ paths:
                         type: array
                         items:
                           type: string
+                      status:
+                        type: string
+                        enum:
+                          - PENDING
+                          - APPROVED
+                          - CANCELLED
+                        default: PENDING
                   envelope:
                     type: object
                     properties:
@@ -71892,6 +71920,13 @@ definitions:
             type: string
           rqId:
             type: string
+          status:
+            type: string
+            enum:
+              - PENDING
+              - APPROVED
+              - CANCELLED
+            default: PENDING
       envelope:
         type: object
         properties:
@@ -71916,6 +71951,13 @@ definitions:
         type: string
       rqId:
         type: string
+      status:
+        type: string
+        enum:
+          - PENDING
+          - APPROVED
+          - CANCELLED
+        default: PENDING
   quotationmvp.quotation.QueryListProposalResponse:
     type: object
     properties:
@@ -71937,6 +71979,13 @@ definitions:
                   type: string
                 rqId:
                   type: string
+                status:
+                  type: string
+                  enum:
+                    - PENDING
+                    - APPROVED
+                    - CANCELLED
+                  default: PENDING
             envelope:
               type: object
               properties:
@@ -71997,6 +72046,13 @@ definitions:
                   type: array
                   items:
                     type: string
+                status:
+                  type: string
+                  enum:
+                    - PENDING
+                    - APPROVED
+                    - CANCELLED
+                  default: PENDING
             envelope:
               type: object
               properties:
@@ -72062,6 +72118,13 @@ definitions:
                 type: string
               rqId:
                 type: string
+              status:
+                type: string
+                enum:
+                  - PENDING
+                  - APPROVED
+                  - CANCELLED
+                default: PENDING
           envelope:
             type: object
             properties:
@@ -72094,6 +72157,13 @@ definitions:
                 type: array
                 items:
                   type: string
+              status:
+                type: string
+                enum:
+                  - PENDING
+                  - APPROVED
+                  - CANCELLED
+                default: PENDING
           envelope:
             type: object
             properties:
@@ -72123,6 +72193,13 @@ definitions:
             type: array
             items:
               type: string
+          status:
+            type: string
+            enum:
+              - PENDING
+              - APPROVED
+              - CANCELLED
+            default: PENDING
       envelope:
         type: object
         properties:
@@ -72136,6 +72213,13 @@ definitions:
         type: string
       creator:
         type: string
+  quotationmvp.quotation.Status:
+    type: string
+    enum:
+      - PENDING
+      - APPROVED
+      - CANCELLED
+    default: PENDING
   quotationmvp.quotation.Transaction:
     type: object
     properties:
@@ -72147,3 +72231,10 @@ definitions:
         type: array
         items:
           type: string
+      status:
+        type: string
+        enum:
+          - PENDING
+          - APPROVED
+          - CANCELLED
+        default: PENDING
