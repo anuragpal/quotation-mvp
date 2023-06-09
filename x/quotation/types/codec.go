@@ -9,12 +9,16 @@ import (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgRequestQuotation{}, "quotation/RequestQuotation", nil)
+	cdc.RegisterConcrete(&MsgSendProposal{}, "quotation/SendProposal", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgRequestQuotation{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgSendProposal{},
 	)
 	// this line is used by starport scaffolding # 3
 

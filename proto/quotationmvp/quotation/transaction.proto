@@ -8,3 +8,11 @@ message Transaction {
   string sender          = 2;
   repeated string receiver = 3;
 }
+
+
+message ProposalTransaction {
+  string data            = 1;
+  string sender          = 2;
+  string receiver = 3;
+  string rqId = 4;
+}

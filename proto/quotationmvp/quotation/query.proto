@@ -7,6 +7,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "quotationmvp/quotation/params.proto";
 import "quotationmvp/quotation/quotation.proto";
+import "quotationmvp/quotation/proposal.proto";
 
 option go_package = "quotation-mvp/x/quotation/types";
 
@@ -30,6 +31,18 @@ service Query {
     option (google.api.http).get = "/quotation-mvp/quotation/show_quotation/{id}";
   
   }
+  
+  // Queries a list of ListProposal items.
+  rpc ListProposal (QueryListProposalRequest) returns (QueryListProposalResponse) {
+    option (google.api.http).get = "/quotation-mvp/quotation/list_proposal";
+  
+  }
+  
+  // Queries a list of ShowProposal items.
+  rpc ShowProposal (QueryShowProposalRequest) returns (QueryShowProposalResponse) {
+    option (google.api.http).get = "/quotation-mvp/quotation/show_proposal/{id}";
+  
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -47,7 +60,7 @@ message QueryListQuotationRequest {
 
 message QueryListQuotationResponse {
   repeated Quotation                              quotation  = 1 [(gogoproto.nullable) = false];
-  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 message QueryShowQuotationRequest {
@@ -56,5 +69,22 @@ message QueryShowQuotationRequest {
 
 message QueryShowQuotationResponse {
   Quotation quotation = 1;
+}
+
+message QueryListProposalRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryListProposalResponse {
+  repeated Proposal                               proposal   = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryShowProposalRequest {
+  string id = 1;
+}
+
+message QueryShowProposalResponse {
+  Proposal proposal = 1;
 }
 
