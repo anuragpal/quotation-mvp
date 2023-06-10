@@ -13,7 +13,8 @@ message Transaction {
   string data               = 1;
   string sender             = 2;
   repeated string receiver  = 3;
-  Status status             = 4;  
+  Status status             = 4;
+  repeated string proposals = 5;
 }
 
 
