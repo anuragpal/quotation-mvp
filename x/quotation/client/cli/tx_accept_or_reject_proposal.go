@@ -1,24 +1,24 @@
 package cli
 
 import (
+	"strconv"
 	"encoding/json"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/spf13/cobra"
 	"quotation-mvp/x/quotation/types"
-	"strconv"
 )
 
 var _ = strconv.Itoa(0)
 
-func CmdSendProposal() *cobra.Command {
+func CmdAcceptOrRejectProposal() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "send-proposal [payload]",
-		Short: "Broadcast message send-proposal",
+		Use:   "accept-or-reject-proposal [payload]",
+		Short: "Broadcast message accept-or-reject-proposal",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argPayload := new(types.MsgSendProposal)
+			argPayload := new(types.MsgAcceptOrRejectProposal)
 			err = json.Unmarshal([]byte(args[0]), argPayload)
 			if err != nil {
 				return err
@@ -29,7 +29,7 @@ func CmdSendProposal() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgSendProposal(
+			msg := types.NewMsgAcceptOrRejectProposal(
 				clientCtx.GetFromAddress().String(),
 				argPayload,
 			)

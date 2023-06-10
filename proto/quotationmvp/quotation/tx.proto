@@ -9,8 +9,9 @@ option go_package = "quotation-mvp/x/quotation/types";
 
 // Msg defines the Msg service.
 service Msg {
-  rpc RequestQuotation (MsgRequestQuotation) returns (MsgRequestQuotationResponse);
-  rpc SendProposal     (MsgSendProposal    ) returns (MsgSendProposalResponse    );
+  rpc RequestQuotation       (MsgRequestQuotation      ) returns (MsgRequestQuotationResponse      );
+  rpc SendProposal           (MsgSendProposal          ) returns (MsgSendProposalResponse          );
+  rpc AcceptOrRejectProposal (MsgAcceptOrRejectProposal) returns (MsgAcceptOrRejectProposalResponse);
 }
 message MsgRequestQuotation {
   string      creator  = 1;
@@ -25,14 +26,26 @@ message MsgRequestQuotationResponse {
 }
 
 message MsgSendProposal {
-  string              creator       = 1;
-  string              id            = 2;
-  ProposalTransaction tx            = 3;
-  Envelope            envelope      = 4;
-  string                version     = 5;
+  string              creator  = 1;
+  string              id       = 2;
+  ProposalTransaction tx       = 3;
+  Envelope            envelope = 4;
+  string              version  = 5;
 }
 
 message MsgSendProposalResponse {
+  string id = 1;
+}
+
+message MsgAcceptOrRejectProposal {
+  string                          creator  = 1;
+  string                          id       = 2;
+  AcceptRejectProposalTransaction tx       = 3;
+  Envelope                        envelope = 4;
+  string                          version  = 5;
+}
+
+message MsgAcceptOrRejectProposalResponse {
   string id = 1;
 }
 

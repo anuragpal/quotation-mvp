@@ -71890,6 +71890,11 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  quotationmvp.quotation.AcceptRejectProposalTransaction:
+    type: object
+    properties:
+      action:
+        type: boolean
   quotationmvp.quotation.Envelope:
     type: object
     properties:
@@ -71898,6 +71903,11 @@ definitions:
       isEncrypt:
         type: boolean
       timestamp:
+        type: string
+  quotationmvp.quotation.MsgAcceptOrRejectProposalResponse:
+    type: object
+    properties:
+      id:
         type: string
   quotationmvp.quotation.MsgRequestQuotationResponse:
     type: object

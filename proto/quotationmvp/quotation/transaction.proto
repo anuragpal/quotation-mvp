@@ -25,3 +25,7 @@ message ProposalTransaction {
   string rqId            = 4;
   Status status          = 5;
 }
+
+message AcceptRejectProposalTransaction {
+  bool action            = 1;
+}
